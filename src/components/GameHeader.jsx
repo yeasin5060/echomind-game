@@ -14,23 +14,23 @@ export default function GameHeader({
   const getModeTitle = () => {
     switch (mode) {
       case 'sequence':
-        return 'Sequence Echo';
+        return 'Sequence';
       case 'matrix':
-        return 'Spatial Recall';
+        return 'Matrix';
       case 'match':
-        return 'Sensory Pairs';
+        return 'Pairs';
       default:
-        return 'Memory Training';
+        return 'Memory';
     }
   };
 
   return (
     <header className="game-header">
       <div className="header-brand">
-        <div className="brand-logo" style={{ boxShadow: `0 0 20px ${theme.glow}` }}>
-          <Brain className="logo-icon" size={26} color={theme.primary} />
+        <div className="brand-logo" style={{ boxShadow: `0 0 15px ${theme.glow}` }}>
+          <Brain className="logo-icon" size={20} color={theme.primary} />
           <div className="logo-sparkle">
-            <Sparkles size={12} color={theme.secondary} />
+            <Sparkles size={9} color={theme.secondary} />
           </div>
         </div>
         <div className="brand-text">
@@ -49,7 +49,6 @@ export default function GameHeader({
               {getModeTitle()}
             </span>
           </div>
-          <p className="brand-tagline">Cognitive working memory & pattern training</p>
         </div>
       </div>
 
@@ -61,7 +60,7 @@ export default function GameHeader({
             title="Reset Game"
             aria-label="Reset Game"
           >
-            <RotateCcw size={18} />
+            <RotateCcw size={15} />
           </button>
         )}
 
@@ -72,16 +71,16 @@ export default function GameHeader({
           aria-label={soundEnabled ? 'Mute Audio' : 'Enable Audio'}
           style={soundEnabled ? { color: theme.secondary } : { opacity: 0.6 }}
         >
-          {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+          {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
         </button>
 
         <button
           className="action-btn"
           onClick={cycleTheme}
-          title={`Current Theme: ${theme.name}. Click to cycle`}
+          title={`Theme: ${theme.name}`}
           aria-label="Cycle Color Theme"
         >
-          <Palette size={18} />
+          <Palette size={15} />
         </button>
 
         <button
@@ -90,7 +89,7 @@ export default function GameHeader({
           title="How to Play"
           aria-label="How to Play"
         >
-          <HelpCircle size={18} />
+          <HelpCircle size={15} />
         </button>
       </div>
     </header>

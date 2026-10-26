@@ -16,19 +16,19 @@ export default function GameStats({
   const getStatusText = () => {
     switch (status) {
       case 'idle':
-        return 'Press Start to Begin';
+        return 'Ready to Train';
       case 'countdown':
-        return 'Prepare Your Mind...';
+        return 'Focus Your Mind...';
       case 'demonstrating':
-        return 'Observe the Echo Pattern';
+        return 'Observe Echo';
       case 'userTurn':
-        return 'Echo the Pattern!';
+        return 'Your Turn: Echo!';
       case 'roundSuccess':
         return 'Perfect Recall! +Level';
       case 'gameOver':
-        return 'Pattern Disrupted';
+        return 'Memory Disrupted';
       case 'paused':
-        return 'Game Paused';
+        return 'Paused';
       default:
         return 'EchoMind';
     }
@@ -38,56 +38,70 @@ export default function GameStats({
 
   return (
     <div className="stats-container">
-      {/* Primary Status Banner */}
+      {/* Sleek Integrated Status Bar */}
       <div
         className={`status-banner status-${status}`}
         style={{
-          borderColor: status === 'userTurn' ? theme.primary : `${theme.secondary}40`,
-          boxShadow: status === 'userTurn' ? `0 0 15px ${theme.glow}` : 'none'
+          borderColor: status === 'userTurn' ? theme.primary : `${theme.secondary}30`,
+          boxShadow: status === 'userTurn' ? `0 0 16px ${theme.glow}` : 'none'
         }}
       >
-        <span className="status-dot" style={{ background: status === 'userTurn' ? theme.secondary : theme.primary }} />
-        <span className="status-label">{getStatusText()}</span>
+        <div className="status-indicator">
+          <span
+            className="status-dot"
+            style={{ background: status === 'userTurn' ? theme.secondary : theme.primary }}
+          />
+          <span className="status-label">{getStatusText()}</span>
+        </div>
+
+        {multiplier > 1 && (
+          <span
+            className="multiplier-pill pulse-glow"
+            style={{ background: theme.accent, color: '#fff' }}
+          >
+            <Zap size={11} className="inline-icon" /> {multiplier}x Boost
+          </span>
+        )}
+
+        {showLives && (
+          <div className="status-lives">
+            {[...Array(3)].map((_, i) => (
+              <Heart
+                key={i}
+                size={14}
+                fill={i < lives ? '#ef4444' : 'transparent'}
+                color={i < lives ? '#ef4444' : '#6b7280'}
+                className={i < lives ? 'heart-active' : 'heart-empty'}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Stats Cards Grid */}
+      {/* 4-Item Compact Stats Bar */}
       <div className="stats-grid">
-        {/* Score Card */}
+        {/* Score */}
         <div className="stat-card">
           <div className="stat-top">
-            <span className="stat-icon-wrapper" style={{ background: `${theme.primary}20` }}>
-              <Target size={16} color={theme.primary} />
-            </span>
+            <Target size={13} color={theme.primary} />
             <span className="stat-name">Score</span>
-            {multiplier > 1 && (
-              <span
-                className="multiplier-pill pulse-glow"
-                style={{ background: theme.accent, color: '#fff' }}
-              >
-                <Zap size={11} className="inline-icon" /> {multiplier}x
-              </span>
-            )}
           </div>
           <div className="stat-value primary-val">{score.toLocaleString()}</div>
         </div>
 
-        {/* High Score Card */}
+        {/* Best */}
         <div className="stat-card">
           <div className="stat-top">
-            <span className="stat-icon-wrapper" style={{ background: 'rgba(245, 158, 11, 0.2)' }}>
-              <Trophy size={16} color="#f59e0b" />
-            </span>
+            <Trophy size={13} color="#f59e0b" />
             <span className="stat-name">Best</span>
           </div>
           <div className="stat-value">{highScore.toLocaleString()}</div>
         </div>
 
-        {/* Level / Round Card */}
+        {/* Level */}
         <div className="stat-card">
           <div className="stat-top">
-            <span className="stat-icon-wrapper" style={{ background: `${theme.secondary}20` }}>
-              <Layers size={16} color={theme.secondary} />
-            </span>
+            <Layers size={13} color={theme.secondary} />
             <span className="stat-name">Level</span>
           </div>
           <div className="stat-value level-val" style={{ color: theme.secondary }}>
@@ -95,40 +109,16 @@ export default function GameStats({
           </div>
         </div>
 
-        {/* Streak / Lives Card */}
-        {showLives ? (
-          <div className="stat-card">
-            <div className="stat-top">
-              <span className="stat-icon-wrapper" style={{ background: 'rgba(239, 68, 68, 0.2)' }}>
-                <Heart size={16} color="#ef4444" />
-              </span>
-              <span className="stat-name">Lives</span>
-            </div>
-            <div className="stat-value lives-row">
-              {[...Array(3)].map((_, i) => (
-                <Heart
-                  key={i}
-                  size={18}
-                  fill={i < lives ? '#ef4444' : 'transparent'}
-                  color={i < lives ? '#ef4444' : '#4b5563'}
-                  className={i < lives ? 'heart-active' : 'heart-empty'}
-                />
-              ))}
-            </div>
+        {/* Streak */}
+        <div className="stat-card">
+          <div className="stat-top">
+            <Flame size={13} color="#f97316" />
+            <span className="stat-name">Streak</span>
           </div>
-        ) : (
-          <div className="stat-card">
-            <div className="stat-top">
-              <span className="stat-icon-wrapper" style={{ background: 'rgba(249, 115, 22, 0.2)' }}>
-                <Flame size={16} color="#f97316" />
-              </span>
-              <span className="stat-name">Streak</span>
-            </div>
-            <div className="stat-value streak-val" style={{ color: streak > 2 ? '#f97316' : 'inherit' }}>
-              {streak} <span className="stat-sub">combo</span>
-            </div>
+          <div className="stat-value streak-val" style={{ color: streak > 2 ? '#f97316' : 'inherit' }}>
+            {streak}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

@@ -132,10 +132,6 @@ export default function App() {
           showHelp={showHelp}
         />
       </main>
-
-      <footer className="game-footer">
-        <p>EchoMind Cognitive Lab • Master working memory with auditory & spatial recall</p>
-      </footer>
     </div>
   );
 }
