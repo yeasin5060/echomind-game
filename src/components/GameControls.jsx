@@ -115,65 +115,64 @@ export default function GameControls({
             </div>
           </div>
 
-          {/* Grid Size & Difficulty in single compact row */}
-          <div className="settings-sub-row">
-            <div className="setting-group compact">
-              <span className="setting-label">
-                <Grid3X3 size={12} className="inline-icon" /> Grid
-              </span>
-              <div className="pill-group">
-                <button
-                  type="button"
-                  className={`pill-btn ${gridSize === 3 ? 'active' : ''}`}
-                  onClick={() => setGridSize(3)}
-                  style={gridSize === 3 ? { borderColor: theme.secondary, color: theme.secondary } : {}}
-                >
-                  3 × 3
-                </button>
-                <button
-                  type="button"
-                  className={`pill-btn ${gridSize === 4 ? 'active' : ''}`}
-                  onClick={() => setGridSize(4)}
-                  style={gridSize === 4 ? { borderColor: theme.secondary, color: theme.secondary } : {}}
-                >
-                  4 × 4
-                </button>
-              </div>
+          {/* Grid Size */}
+          <div className="setting-group">
+            <span className="setting-label">
+              <Grid3X3 size={12} className="inline-icon" /> Grid
+            </span>
+            <div className="pill-group">
+              <button
+                type="button"
+                className={`pill-btn ${gridSize === 3 ? 'active' : ''}`}
+                onClick={() => setGridSize(3)}
+                style={gridSize === 3 ? { borderColor: theme.secondary, color: theme.secondary } : {}}
+              >
+                3 × 3
+              </button>
+              <button
+                type="button"
+                className={`pill-btn ${gridSize === 4 ? 'active' : ''}`}
+                onClick={() => setGridSize(4)}
+                style={gridSize === 4 ? { borderColor: theme.secondary, color: theme.secondary } : {}}
+              >
+                4 × 4
+              </button>
             </div>
+          </div>
 
-            <div className="setting-group compact">
-              <span className="setting-label">
-                <Zap size={12} className="inline-icon" /> Tempo
-              </span>
-              <div className="pill-group">
-                <button
-                  type="button"
-                  className={`pill-btn ${difficulty === 'relaxed' ? 'active' : ''}`}
-                  onClick={() => setDifficulty('relaxed')}
-                  title="Relaxed tempo + extra lives"
-                  style={difficulty === 'relaxed' ? { borderColor: '#10b981', color: '#10b981' } : {}}
-                >
-                  <Shield size={11} className="inline-icon" /> Zen
-                </button>
-                <button
-                  type="button"
-                  className={`pill-btn ${difficulty === 'standard' ? 'active' : ''}`}
-                  onClick={() => setDifficulty('standard')}
-                  title="Standard tempo and multiplier"
-                  style={difficulty === 'standard' ? { borderColor: theme.primary, color: theme.primary } : {}}
-                >
-                  Normal
-                </button>
-                <button
-                  type="button"
-                  className={`pill-btn ${difficulty === 'hyper' ? 'active' : ''}`}
-                  onClick={() => setDifficulty('hyper')}
-                  title="Hyper speed + double score growth"
-                  style={difficulty === 'hyper' ? { borderColor: '#f97316', color: '#f97316' } : {}}
-                >
-                  <Flame size={11} className="inline-icon" /> Hyper
-                </button>
-              </div>
+          {/* Tempo / Difficulty */}
+          <div className="setting-group">
+            <span className="setting-label">
+              <Zap size={12} className="inline-icon" /> Tempo
+            </span>
+            <div className="pill-group">
+              <button
+                type="button"
+                className={`pill-btn ${difficulty === 'relaxed' ? 'active' : ''}`}
+                onClick={() => setDifficulty('relaxed')}
+                title="Relaxed tempo + extra lives"
+                style={difficulty === 'relaxed' ? { borderColor: '#10b981', color: '#10b981' } : {}}
+              >
+                <Shield size={11} className="inline-icon" /> Zen
+              </button>
+              <button
+                type="button"
+                className={`pill-btn ${difficulty === 'standard' ? 'active' : ''}`}
+                onClick={() => setDifficulty('standard')}
+                title="Standard tempo and multiplier"
+                style={difficulty === 'standard' ? { borderColor: theme.primary, color: theme.primary } : {}}
+              >
+                Normal
+              </button>
+              <button
+                type="button"
+                className={`pill-btn ${difficulty === 'hyper' ? 'active' : ''}`}
+                onClick={() => setDifficulty('hyper')}
+                title="Hyper speed + double score growth"
+                style={difficulty === 'hyper' ? { borderColor: '#f97316', color: '#f97316' } : {}}
+              >
+                <Flame size={11} className="inline-icon" /> Hyper
+              </button>
             </div>
           </div>
         </div>

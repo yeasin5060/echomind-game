@@ -709,22 +709,12 @@ button {
 .setting-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-}
-
-.setting-group.compact {
-  flex: 1;
-  min-width: 0;
-}
-
-.settings-sub-row {
-  display: flex;
-  gap: 6px;
+  gap: 8px;
+  width: 100%;
 }
 
 .setting-label {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -734,25 +724,30 @@ button {
   gap: 3px;
   white-space: nowrap;
   flex-shrink: 0;
+  width: 48px;
 }
 
 .pill-group {
   display: flex;
+  flex: 1;
+  width: 100%;
   background: rgba(0, 0, 0, 0.28);
-  padding: 2px;
+  padding: 2.5px;
   border-radius: var(--radius-full);
   gap: 2px;
   min-width: 0;
 }
 
 .pill-btn {
+  flex: 1;
+  min-width: 0;
   background: transparent;
   border: 1px solid transparent;
   color: var(--text-muted);
   font-family: var(--font-main);
   font-size: 11px;
   font-weight: 500;
-  padding: 3.5px 8px;
+  padding: 3.5px 4px;
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -761,6 +756,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 2px;
 }
 
 .pill-btn:hover:not(:disabled) {
